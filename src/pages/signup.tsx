@@ -38,7 +38,7 @@ const handleError = (error: Error) => {
   alert(error.message)
 }
 const LoginPage: React.FC<PageProps> = ({ user }) => {
-  const [, loginMutation] = useLoginMutation()
+  const [, signupMutation] = useSignupMutation()
 
   const form = useFormik({
     initialValues: {
@@ -46,7 +46,7 @@ const LoginPage: React.FC<PageProps> = ({ user }) => {
       email: '',
     },
     async onSubmit(values) {
-      const { error } = await loginMutation({
+      const { error } = await signupMutation({
         email: values.email,
         password: values.password,
       })
@@ -68,7 +68,7 @@ const LoginPage: React.FC<PageProps> = ({ user }) => {
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
               <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
-                  Sign in to your account
+                  Sign up
                 </h2>
               </div>
 
@@ -131,16 +131,16 @@ const LoginPage: React.FC<PageProps> = ({ user }) => {
                       type="submit"
                       className="button flex w-full justify-center rounded-md  px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
                     >
-                      Sign in
+                      Sign up
                     </button>
                   </div>
                 </form>
                 <div className="text-center">
                   <p className="mt-2 text-sm text-gray-300 dark:text-neutral-400">
-                    Don't have an account yet?
-                    <Link href="/signup">
+                    Already have an account?
+                    <Link href="/login">
                       <a className="text-orange-400 hover:text-orange-300">
-                        Sign up here
+                        Sign in here
                       </a>
                     </Link>
                   </p>

@@ -16,12 +16,14 @@ model User {
   updatedAt        DateTime          @updatedAt
   username         String            @unique
   email            String?           @unique
+  password         String?
   avatar           String?
   bio              String?
   github           String?
   twitter          String?
   website          String?
   githubUserId     String?           @unique
+  localUserId      String?           @unique
   topics           Topic[]
   comments         Comment[]
   userTopicLikes   UserTopicLike[]

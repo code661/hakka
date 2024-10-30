@@ -1,4 +1,10 @@
-import { Field, Int, ObjectType, registerEnumType } from 'type-graphql'
+import {
+  Field,
+  Int,
+  ObjectType,
+  registerEnumType,
+  ArgsType,
+} from 'type-graphql'
 
 @ObjectType()
 export class UserPublicInfo {
@@ -20,3 +26,21 @@ export enum SORT_ORDER {
 registerEnumType(SORT_ORDER, {
   name: 'SORT_ORDER',
 })
+
+@ArgsType()
+export class SignupArgs {
+  @Field()
+  email: string
+
+  @Field()
+  password: string
+}
+
+@ArgsType()
+export class LoginArgs {
+  @Field()
+  email: string
+
+  @Field()
+  password: string
+}
